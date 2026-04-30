@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: mvp_shop
+    env: python
+    plan: free
+
+    buildCommand: pip install -r requirements.txt
+
+    startCommand: gunicorn shop.wsgi:application --bind 0.0.0.0:$PORT
+
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: SECRET_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PUBLIC_KEY
+        sync: false
