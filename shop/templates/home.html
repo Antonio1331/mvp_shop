@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+</head>
+<body>
+
+<h1>Items</h1>
+
+{% if items %}
+    {% for item in items %}
+        <div style="margin-bottom: 20px;">
+            <h2>{{ item.name }}</h2>
+            <p>{{ item.description }}</p>
+            <p><strong>Цена:</strong> ${{ item.price|floatformat:2 }}</p>
+
+            <a href="/item/{{ item.id }}">
+                <button>View</button>
+            </a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Товаров нет</p>
+{% endif %}
+
+</body>
+</html>
